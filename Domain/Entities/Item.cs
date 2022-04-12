@@ -14,6 +14,5 @@ namespace Domain.Entities
         public ItemType? Type { get; private set; }
         public DateTime? ExpirationDate { get; private set; }
 
-
     }
 }

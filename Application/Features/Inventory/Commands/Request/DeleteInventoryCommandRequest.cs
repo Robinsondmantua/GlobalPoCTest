@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MediatR;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,16 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Inventory.Commands.Request
 {
-    internal class DeleteInventoryCommandRequest
+    /// <summary>
+    /// This class receives the request for removing an inventory
+    /// </summary>
+    public class DeleteInventoryCommandRequest: IRequest<Unit>
     {
+        public string Id { get; set; }
+        public DeleteInventoryCommandRequest(string id)
+        {
+            Id = id;
+        }
+
     }
 }

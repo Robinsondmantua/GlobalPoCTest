@@ -6,14 +6,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Features.Item.Queries.Request
+namespace Application.Features.Item.Commands.Request
 {
-    public class ItemSingleQueryRequest: IRequest<ItemDto>
+    public class DeleteItemCommandRequest : IRequest<ItemDto>
     {
-        public int Id { get; set; }
-        public ItemSingleQueryRequest(int id)
+        public string Id { get; set; }
+
+        public DeleteItemCommandRequest(string id)
         {
             Id = id;
         }
+
     }
 }

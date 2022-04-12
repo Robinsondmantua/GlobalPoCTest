@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Item.Queries.Handlers
 {
-    internal class ItemSingleQueryHandler
+    public class ItemSingleQueryHandler
     {
     }
 }

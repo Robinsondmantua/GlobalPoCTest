@@ -19,10 +19,7 @@
 
   <ItemGroup>
     <Folder Include="Features\Inventory\Commands\Validators\" />
-    <Folder Include="Features\Inventory\Dtos\" />
     <Folder Include="Features\Inventory\Queries\Validators\" />
-    <Folder Include="Features\Item\Commands\Validatiors\" />
-    <Folder Include="Features\Item\Commands\Request\" />
     <Folder Include="Features\Item\Queries\Validators\" />
   </ItemGroup>
 

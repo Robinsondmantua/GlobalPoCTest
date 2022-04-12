@@ -14,10 +14,11 @@ namespace Domain.Aggregate
     /// </summary>
     public class Inventory: EntityBase, IDomainEvent
     {
+        
+        public string Name { get; private set; }
+        public string Description { get; private set; }
+
         private readonly List<Item>? _items;
-
-        public string? Name { get; private set; }
-
         public IReadOnlyCollection<Item>? Items => _items;
 
         public List<DomainEvent> DomainEvents { get; set; } = new List<DomainEvent>();
