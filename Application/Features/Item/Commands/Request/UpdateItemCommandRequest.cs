@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Item.Commands.Request
 {
+    /// <summary>
+    /// This class receives the request for updating an item
+    /// </summary>
+
     public class UpdateItemCommandRequest : IRequest<ItemDto>
     {
         public ItemDto RequestParams { get; set; }

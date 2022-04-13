@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 namespace Application.Common.Interfaces
 {
     /// <summary>
-    /// This interface defines methods for commands.
+    /// This interface defines methods for commands (Insert,Update and delete actions).
     /// </summary>
     public interface ICommandRepository<T> where T: class
     {
-        Task<T> AddAsync(T entity);
-        Task UpdateAsync(T entity);
-        Task DeleteAsync(T entity);
+        T Add(T entity);
+        void Update(T entity);
+        void Delete(T entity);
     }
 }

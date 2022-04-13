@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Features.Inventory.Queries.Handlers
+namespace Infraestructure.Context
 {
-    public class PatchInventoryCommandHandler
+    public static class Context<T>
     {
+        public static List<T> entities = new List<T>();
+
     }
 }

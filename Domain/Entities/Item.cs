@@ -14,5 +14,16 @@ namespace Domain.Entities
         public ItemType? Type { get; private set; }
         public DateTime? ExpirationDate { get; private set; }
 
+
+        public static Item Create(int id, string name, ItemType type, DateTime? expirationDate)
+        {
+            return new Item
+            {
+                Id = id,
+                Name = name,
+                Type = type,
+                ExpirationDate = expirationDate
+            };
+        }
     }
 }

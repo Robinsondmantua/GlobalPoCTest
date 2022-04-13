@@ -8,7 +8,10 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Item.Commands.Request
 {
-    public class DeleteItemCommandRequest : IRequest<ItemDto>
+    /// <summary>
+    /// This class receives the request for removing an item
+    /// </summary>
+    public class DeleteItemCommandRequest : IRequest<Unit>
     {
         public string Id { get; set; }
 

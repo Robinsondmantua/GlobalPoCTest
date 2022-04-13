@@ -10,12 +10,11 @@ using System.Threading.Tasks;
 namespace Application.Features.Item.Queries.Handlers
 {
     /// <summary>
-    /// Query class to process a request for getting one item by a filter
+    /// Query class to process a request for getting all items
     /// </summary>
-
-    public class ItemSingleQueryHandler : IRequestHandler<ItemSingleQueryRequest, ItemDto>
+    public class ItemAllQueryHandler : IRequestHandler<ItemAllQueryRequest, IEnumerable<ItemDto>>
     {
-        Task<ItemDto> IRequestHandler<ItemSingleQueryRequest, ItemDto>.Handle(ItemSingleQueryRequest request, CancellationToken cancellationToken)
+        public Task<IEnumerable<ItemDto>> Handle(ItemAllQueryRequest request, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }

@@ -12,12 +12,12 @@ namespace Application.Features.Inventory.Commands.Request
     /// <summary>
     /// This class receives the request for inserting an inventory
     /// </summary>
-    public class NewTodoItemCommand : IRequest<InventoryDto>
+    public class NewInventoryCommandRequest : IRequest<InventoryDto>
     {
         public string Name { get; set; }
         public IEnumerable<ItemDto>? Items { get; set;}
 
-        public NewTodoItemCommand(string name)
+        public NewInventoryCommandRequest(string name)
         {
             Name = name;
         }

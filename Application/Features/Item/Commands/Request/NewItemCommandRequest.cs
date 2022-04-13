@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Item.Commands.Request
 {
+    /// <summary>
+    /// This class receives the request for inserting an item
+    /// </summary>
     public class NewItemCommandRequest : IRequest<ItemDto>
     {
         public ItemDto RequestParams { get; set; }
