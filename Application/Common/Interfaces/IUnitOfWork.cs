@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Common.Dtos
+namespace Application.Common.Interfaces
 {
-    public class IdentityDto
+    public interface IUnitOfWork : IDisposable
     {
-        public int Id { get; set; }
+        Task Commit();
+        Task Rollback();
     }
 }

@@ -9,7 +9,7 @@ namespace Domain.Common
 {
     public class EntityBase
     {
-        protected int Id {get; set;}
+        public Guid Id {get; protected set;}
         public ICollection<IDomainEvent>? Events { get; }
     }
 }

@@ -15,11 +15,13 @@ namespace Application.Common.Exceptions
         public NotFoundException(string message)
             : base(message)
         {
+            Source = message;
         }
 
         public NotFoundException(string message, Exception innerException)
             : base(message, innerException)
         {
+            Source = message; 
         }
 
         public NotFoundException(string name, object key)

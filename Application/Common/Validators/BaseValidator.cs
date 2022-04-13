@@ -11,12 +11,12 @@ namespace Application.Common.Validators
     /// <summary>
     /// Base validator for common request (An Id, header information or something like that)
     /// </summary>
-    public class BaseValidator : AbstractValidator<IdentityDto>
+    public class BaseValidator : AbstractValidator<IdentityRequestDto>
     {
         public BaseValidator()
         {
             RuleFor(v => v.Id)
-            .GreaterThan(0);
+            .NotEmpty();
         }
     }
 }

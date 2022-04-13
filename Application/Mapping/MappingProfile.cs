@@ -10,9 +10,9 @@ namespace Application.Mapping
     /// <summary>
     /// This class is used for profiling the mapping configuration 
     /// </summary>
-    public class MappingProfile : Profile
+    public class ItemMappingProfile : Profile
     {
-        public MappingProfile()
+        public ItemMappingProfile()
         {
 
         }

@@ -11,7 +11,7 @@ namespace Application.Common.Interfaces
     /// <typeparam name="T"></typeparam>
     public interface IQueryRepository<T> where T: class
     {
-        IReadOnlyList<T> GetAllAsync();
-        T GetByIdAsync(int id);
+        Task<IReadOnlyList<T>> GetAllAsync();
+        Task<T> GetByIdAsync(Guid id);
     }
 }

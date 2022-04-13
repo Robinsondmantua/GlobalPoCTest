@@ -1,5 +1,7 @@
-﻿using Application.Features.Item.Commands.Request;
+﻿using Application.Common.Interfaces;
+using Application.Features.Item.Commands.Request;
 using Application.Features.Item.Dtos;
+using AutoMapper;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -14,9 +16,20 @@ namespace Application.Features.Item.Queries.Handlers
     /// </summary>
     public class NewItemCommandHandler : IRequestHandler<NewItemCommandRequest, ItemDto>
     {
-        public Task<ItemDto> Handle(NewItemCommandRequest request, CancellationToken cancellationToken)
+        private readonly ICommandRepository<Domain.Entities.Item> _itemCommandRepository;
+        private readonly IMapper _mapper;
+
+        public NewItemCommandHandler(ICommandRepository<Domain.Entities.Item> itemCommandRepository, IMapper mapper)
         {
-            throw new NotImplementedException();
+            _itemCommandRepository = itemCommandRepository;
+            _mapper = mapper;
+        }
+
+        public async Task<ItemDto> Handle(NewItemCommandRequest request, CancellationToken cancellationToken)
+        {
+            var entity = _mapper.Map<Domain.Entities.Item>(request.RequestParams);
+            var result = await Task.Run(() => { return _itemCommandRepository.AddAsync(entity); });
+            return _mapper.Map<ItemDto>(result);
         }
     }
 }

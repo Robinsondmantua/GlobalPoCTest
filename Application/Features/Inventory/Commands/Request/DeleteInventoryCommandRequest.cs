@@ -13,8 +13,8 @@ namespace Application.Features.Inventory.Commands.Request
     /// </summary>
     public class DeleteInventoryCommandRequest: IRequest<Unit>
     {
-        public IdentityDto RequestParams { get; set; }
-        public DeleteInventoryCommandRequest(IdentityDto requestParams)
+        public IdentityRequestDto RequestParams { get; set; }
+        public DeleteInventoryCommandRequest(IdentityRequestDto requestParams)
         {
             RequestParams = requestParams;
         }

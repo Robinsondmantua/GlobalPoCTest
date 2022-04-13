@@ -13,9 +13,9 @@ namespace Application.Features.Item.Commands.Request
     /// </summary>
     public class DeleteItemCommandRequest : IRequest<Unit>
     {
-        public string Id { get; set; }
+        public Guid Id { get; set; }
 
-        public DeleteItemCommandRequest(string id)
+        public DeleteItemCommandRequest(Guid id)
         {
             Id = id;
         }

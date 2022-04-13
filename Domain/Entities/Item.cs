@@ -15,11 +15,11 @@ namespace Domain.Entities
         public DateTime? ExpirationDate { get; private set; }
 
 
-        public static Item Create(int id, string name, ItemType type, DateTime? expirationDate)
+        public static Item Create(string name, ItemType type, DateTime? expirationDate)
         {
             return new Item
             {
-                Id = id,
+                Id = new Guid(),
                 Name = name,
                 Type = type,
                 ExpirationDate = expirationDate
