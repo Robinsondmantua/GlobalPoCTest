@@ -28,7 +28,7 @@ namespace Application.Features.Item.Queries.Handlers
 
         public async Task<ItemDto> Handle(ItemSingleQueryRequest request, CancellationToken cancellationToken)
         {
-            return _mapper.Map<ItemDto>(_itemQueryRepository.GetByIdAsync(request.Id)); 
+            return _mapper.Map<ItemDto>(_itemQueryRepository.GetByIdAsync(request.Id).Result); 
         }
     }
 }

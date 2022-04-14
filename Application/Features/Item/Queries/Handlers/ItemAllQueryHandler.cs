@@ -27,7 +27,7 @@ namespace Application.Features.Item.Queries.Handlers
 
         public async Task<IEnumerable<ItemDto>> Handle(ItemAllQueryRequest request, CancellationToken cancellationToken)
         {
-            return _mapper.Map<IEnumerable<ItemDto>>(_itemQueryRepository.GetAllAsync());  
+            return _mapper.Map<IEnumerable<ItemDto>>(_itemQueryRepository.GetAllAsync().Result);  
         }
     }
 }

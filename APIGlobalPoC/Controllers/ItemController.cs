@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Application.Features.Item.Commands.Request;
 using Application.Features.Item.Dtos;
+using Application.Features.Item.Queries.Handlers;
+using Application.Features.Item.Queries.Request;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -47,6 +49,25 @@ namespace Presentation.Controllers
             {
                 return BadRequest();
             }
+        }
+
+        [HttpGet]
+        [SwaggerOperation("Get all items.")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<List<ItemDto>> GetAll()
+        {
+            var result = await Mediator.Send(new ItemAllQueryRequest());
+            return result.ToList();
+        }
+
+        [HttpGet("{id}")]
+        [SwaggerOperation("Get a ToDo task by its identifier.")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ItemDto> Get(Guid id)
+        {
+            return await Mediator.Send(new ItemSingleQueryRequest(id));
         }
     }
 }
