@@ -35,6 +35,7 @@ namespace Presentation.Controllers
         [SwaggerOperation("Update an existing item.")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> UpdateItem(Guid id, UpdateItemCommandRequest command)
         {
             if (command.RequestParams.Id == id)

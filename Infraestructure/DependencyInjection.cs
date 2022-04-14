@@ -21,8 +21,10 @@ namespace Application.Common
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
             services.AddTransient<IUnitOfWork, MemoryUnitOfWork>();
-            services.AddSingleton(typeof(ICommandRepository<>), typeof(MemoryRepository<>));
-            services.AddSingleton(typeof(IQueryRepository<>), typeof(MemoryRepository<>));
+            services.AddSingleton<ICommandRepository<Domain.Entities.Item>, CommandMemoryRepositoryItem>();
+            services.AddSingleton<IQueryRepository<Domain.Entities.Item>, QueryMemoryRepositoryItem>();
+            services.AddSingleton<ICommandRepository<Domain.Aggregate.Inventory>, CommandMemoryRepositoryInventory>();
+            services.AddSingleton<IQueryRepository<Domain.Aggregate.Inventory>, QueryMemoryRepositoryInventory>();
             services.AddSingleton<IContext, Context>();
             return services;
         }

@@ -1,5 +1,7 @@
-﻿using Application.Features.Item.Dtos;
+﻿using Application.Common.Interfaces;
+using Application.Features.Item.Dtos;
 using Application.Features.Item.Queries.Request;
+using AutoMapper;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -14,9 +16,18 @@ namespace Application.Features.Item.Queries.Handlers
     /// </summary>
     public class ItemAllQueryHandler : IRequestHandler<ItemAllQueryRequest, IEnumerable<ItemDto>>
     {
-        public Task<IEnumerable<ItemDto>> Handle(ItemAllQueryRequest request, CancellationToken cancellationToken)
+        private readonly IQueryRepository<Domain.Entities.Item> _itemQueryRepository;
+        private readonly IMapper _mapper;
+
+        public ItemAllQueryHandler(IQueryRepository<Domain.Entities.Item> itemQueryRepository, IMapper mapper)
         {
-            throw new NotImplementedException();
+            _itemQueryRepository = itemQueryRepository;
+            _mapper = mapper;
+        }
+
+        public async Task<IEnumerable<ItemDto>> Handle(ItemAllQueryRequest request, CancellationToken cancellationToken)
+        {
+            return _mapper.Map<IEnumerable<ItemDto>>(_itemQueryRepository.GetAllAsync());  
         }
     }
 }

@@ -31,8 +31,6 @@ namespace Application.Common.Behaviours
 
             _logger.LogInformation($"[START] [{correlationId}] {requestName} ");
 
-            TResponse response;
-
             var stopWatch = Stopwatch.StartNew();
 
             try

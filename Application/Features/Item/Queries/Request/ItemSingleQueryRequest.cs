@@ -13,8 +13,8 @@ namespace Application.Features.Item.Queries.Request
     /// </summary>
     public class ItemSingleQueryRequest: IRequest<ItemDto>
     {
-        public int Id { get; set; }
-        public ItemSingleQueryRequest(int id)
+        public Guid Id { get; set; }
+        public ItemSingleQueryRequest(Guid id)
         {
             Id = id;
         }

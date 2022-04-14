@@ -8,28 +8,25 @@ using System.Threading.Tasks;
 
 namespace Infraestructure.Repository
 {
-    public class QueriesMemoryRepository<T> : IQueryRepository<T>
-        where T : EntityBase
+    public class QueryMemoryRepositoryItem : IQueryRepository<Domain.Entities.Item>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IContext _context;
 
-        public QueriesMemoryRepository(IUnitOfWork unitOfWork, IContext context)
+        public QueryMemoryRepositoryItem(IUnitOfWork unitOfWork, IContext context)
         {
             _unitOfWork = unitOfWork;
             _context = context;
         }
 
-        public async Task<IReadOnlyList<T>> GetAllAsync()
+        public async Task<IReadOnlyList<Domain.Entities.Item>> GetAllAsync()
         {
-            return _context.entities;
+            return _context.Items;
         }
 
-        public async Task<T> GetByIdAsync(Guid id)
+        public async Task<Domain.Entities.Item> GetByIdAsync(Guid id)
         {
-            return entities.FirstOrDefault(x=>x.Id == id);
+            return _context.Items.FirstOrDefault(x => x.Id == id);
         }
-
-
     }
 }

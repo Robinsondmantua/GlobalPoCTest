@@ -1,5 +1,7 @@
-﻿using Application.Features.Item.Dtos;
+﻿using Application.Common.Interfaces;
+using Application.Features.Item.Dtos;
 using Application.Features.Item.Queries.Request;
+using AutoMapper;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -15,9 +17,18 @@ namespace Application.Features.Item.Queries.Handlers
 
     public class ItemSingleQueryHandler : IRequestHandler<ItemSingleQueryRequest, ItemDto>
     {
-        Task<ItemDto> IRequestHandler<ItemSingleQueryRequest, ItemDto>.Handle(ItemSingleQueryRequest request, CancellationToken cancellationToken)
+        private readonly IQueryRepository<Domain.Entities.Item> _itemQueryRepository;
+        private readonly IMapper _mapper;
+
+        public ItemSingleQueryHandler(IQueryRepository<Domain.Entities.Item> itemQueryRepository, IMapper mapper)
         {
-            throw new NotImplementedException();
+            _itemQueryRepository = itemQueryRepository;
+            _mapper = mapper;
+        }
+
+        public async Task<ItemDto> Handle(ItemSingleQueryRequest request, CancellationToken cancellationToken)
+        {
+            return _mapper.Map<ItemDto>(_itemQueryRepository.GetByIdAsync(request.Id)); 
         }
     }
 }

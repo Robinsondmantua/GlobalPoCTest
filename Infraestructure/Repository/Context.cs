@@ -10,8 +10,8 @@ namespace Infraestructure.Repository
 {
     public class Context : IContext
     {
-        public List<Item> Items { get; set; }
-        public List<Inventory>? Inventories { get; set; }
+        public List<Item> Items { get; set; } = new List<Item>();
+        public List<Inventory>? Inventories { get; set; } = new List<Inventory>();
     }
 
     public interface IContext

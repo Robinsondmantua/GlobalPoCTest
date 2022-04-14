@@ -18,7 +18,7 @@ namespace Domain.Aggregate
         public string Name { get; private set; }
         public string Description { get; private set; }
 
-        private readonly List<Item>? _items;
+        private readonly List<Item>? _items = new List<Item>();
         public IReadOnlyCollection<Item>? Items => _items;
 
         public List<DomainEvent> DomainEvents { get; set; } = new List<DomainEvent>();
