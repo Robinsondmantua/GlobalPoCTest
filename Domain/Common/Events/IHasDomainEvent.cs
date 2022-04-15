@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 
 namespace Domain.Common.Events
 {
-    public interface IDomainEvent
+    /// <summary>
+    /// Interface to implement a list of events
+    /// </summary>
+    public interface IHasDomainEvent
     {
-        public List<DomainEvent> DomainEvents { get;  set; }
+        public List<DomainEvent> DomainEvents { get; set; }
     }
 }

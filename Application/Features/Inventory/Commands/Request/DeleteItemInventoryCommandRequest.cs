@@ -11,13 +11,16 @@ namespace Application.Features.Inventory.Commands.Request
     /// <summary>
     /// This class receives the request for removing an inventory
     /// </summary>
-    public class DeleteInventoryCommandRequest: IRequest<Unit>
+    public class DeleteItemInventoryCommandRequest: IRequest<Unit>
     {
-        public IdentityRequestDto RequestParams { get; set; }
-        public DeleteInventoryCommandRequest(IdentityRequestDto requestParams)
-        {
-            RequestParams = requestParams;
-        }
 
+        public Guid InventoryId { get; set; }
+        public string ItemName { get; set; }
+
+        public DeleteItemInventoryCommandRequest(Guid inventoryId, string itemName)
+        {
+            InventoryId = inventoryId;
+            ItemName = itemName;
+        }
     }
 }

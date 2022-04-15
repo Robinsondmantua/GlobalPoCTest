@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 namespace Application.Common.Validators
 {
     /// <summary>
-    /// Base validator for common request (An Id, header information or something like that)
+    /// Base validator for common request (A Guid, header information or something that identifies the request)
     /// </summary>
-    public class BaseValidator : AbstractValidator<IdentityRequestDto>
+    public class BaseValidator : AbstractValidator<Guid>
     {
         public BaseValidator()
         {
-            RuleFor(v => v.Id)
+            RuleFor(v => v)
             .NotEmpty();
         }
     }

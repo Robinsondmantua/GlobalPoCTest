@@ -8,11 +8,14 @@ using System.Threading.Tasks;
 
 namespace Domain.Events
 {
-    public class ItemExpiredDomainEvent : DomainEvent
+    /// <summary>
+    /// Event when removing an item form the inventory 
+    /// </summary>
+    public class InventoryItemDeletedDomainEvent : DomainEvent
     {
         public Item Item { get; }
 
-        public ItemExpiredDomainEvent(Item item)
+        public InventoryItemDeletedDomainEvent(Item item)
         {
             Item = item;
         }

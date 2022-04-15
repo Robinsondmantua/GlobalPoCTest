@@ -32,7 +32,7 @@ namespace Application.Features.Item.Queries.Handlers
             var entity = _mapper.Map<Domain.Entities.Item>(request.RequestParams);
             await Task.Run(() => { return _itemCommandRepository.UpdateAsync(entity); });
 
-            var updatedItem = await _itemQueryRepository.GetByIdAsync(request.RequestParams.Id.Value);
+            var updatedItem = await _itemQueryRepository.GetByIdAsync(request.RequestParams.Id);
 
             return _mapper.Map<ItemDto>(updatedItem);
         }

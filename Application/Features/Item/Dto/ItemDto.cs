@@ -7,9 +7,12 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Item.Dtos
 {
+    /// <summary>
+    /// Dto to transfer information between layers
+    /// </summary>
     public class ItemDto
     {
-        public Guid? Id { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public ItemType? Type { get; set; }
         public DateTime? ExpirationDate { get; set; }

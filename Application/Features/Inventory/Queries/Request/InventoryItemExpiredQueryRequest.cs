@@ -12,10 +12,10 @@ namespace Application.Features.Inventory.Queries.Request
     /// This class receives the request for getting one inventory
     /// </summary>
 
-    public class InventorySingleQueryRequest : IRequest<InventoryDto>
+    public class InventoryItemExpiredQueryRequest : IRequest<InventoryDto>
     {
         public Guid Id { get; set; }
-        public InventorySingleQueryRequest(Guid id)
+        public InventoryItemExpiredQueryRequest(Guid id)
         {
             Id = id;
         }

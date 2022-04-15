@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
+    /// <summary>
+    /// Item's entity
+    /// </summary>
     public class Item : EntityBase
     {
         public string Name { get; private set; }

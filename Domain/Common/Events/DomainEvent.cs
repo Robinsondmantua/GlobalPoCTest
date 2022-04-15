@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Domain.Common.Events
 {
+    /// <summary>
+    /// Base class for events
+    /// </summary>
     public abstract class DomainEvent
     {
         protected DomainEvent()

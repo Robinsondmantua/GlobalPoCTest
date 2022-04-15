@@ -19,8 +19,6 @@
 
   <ItemGroup>
     <Folder Include="Features\Inventory\Commands\Validators\" />
-    <Folder Include="Features\Inventory\Queries\Validators\" />
-    <Folder Include="Features\Item\Queries\Validators\" />
   </ItemGroup>
 
 </Project>

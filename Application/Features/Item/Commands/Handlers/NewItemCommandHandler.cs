@@ -27,7 +27,7 @@ namespace Application.Features.Item.Queries.Handlers
 
         public async Task<ItemDto> Handle(NewItemCommandRequest request, CancellationToken cancellationToken)
         {
-            var entity = _mapper.Map<Domain.Entities.Item>(request.RequestParams);
+            var entity = Domain.Entities.Item.Create(request.RequestParams.Name, request.RequestParams.Type.Value, request.RequestParams.ExpirationDate);
             var result = await Task.Run(() => { return _itemCommandRepository.AddAsync(entity); });
             return _mapper.Map<ItemDto>(result);
         }
