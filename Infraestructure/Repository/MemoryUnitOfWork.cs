@@ -7,11 +7,22 @@ using System.Threading.Tasks;
 
 namespace Infraestructure.Repository
 {
+    /// <summary>
+    /// Unit of work pattern to group operations
+    /// </summary>
     public class MemoryUnitOfWork : IUnitOfWork
     {
+        private readonly IEventNotificationService _eventNotificationService;
+
+        public MemoryUnitOfWork(IEventNotificationService eventNotificationService)
+        {
+            _eventNotificationService = eventNotificationService;
+        }
+
         public async Task Commit()
         {
-            //Commit
+            //Commit 
+            await _eventNotificationService.Notify();
         }
         public async Task Rollback()
         {

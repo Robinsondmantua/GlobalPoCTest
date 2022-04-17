@@ -15,7 +15,8 @@ namespace Application.Features.Inventory.Commands.Request
     public class NewInventoryCommandRequest : IRequest<InventoryDto>
     {
         public string Name { get; set; }
-        public IEnumerable<ItemDto>? Items { get; set;}
+        public string Description { get; set; }
+        public IEnumerable<Guid>? Items { get; set;}
 
         public NewInventoryCommandRequest(string name)
         {

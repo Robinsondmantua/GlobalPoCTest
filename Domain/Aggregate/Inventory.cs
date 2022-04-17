@@ -13,22 +13,23 @@ namespace Domain.Aggregate
     /// <summary>
     /// Inventory's Aggregate 
     /// </summary>
-    public class Inventory: EntityBase, IHasDomainEvent 
+    public class Inventory : EntityBase
     {
-        
+
         public string Name { get; private set; }
         public string Description { get; private set; }
 
         private readonly List<Item> _items = new List<Item>();
         public IReadOnlyCollection<Item> Items => _items;
 
-        public List<DomainEvent> DomainEvents { get; set;}
-
-        public void Create(string _name, string _description)
+        public static Inventory Create(string _name, string _description)
         {
-            Id = new Guid();
-            Name = _name;
-            Description = _description;
+            return new Inventory
+            {
+                Id = new Guid(),
+                Name = _name,
+                Description = _description
+            };
         }
 
         public void AddItem(Item item)
@@ -36,21 +37,23 @@ namespace Domain.Aggregate
             _items.Add(item);
         }
 
-        public InventoryItemDeletedDomainEvent RemoveItem(Item item)
+        public void RemoveItem(Item item)
         {
             _items.Remove(item);
-            return new InventoryItemDeletedDomainEvent(item);
         }
 
-        public void CheckItemsExpired()
+        public bool IsAnyItemExpired()
         {
+            bool anyExpired = false;
             foreach (var _item in _items)
             {
-                if(_item.ExpirationDate < DateTime.UtcNow)
+                if (_item.ExpirationDate < DateTime.UtcNow)
                 {
                     DomainEvents.Add(new InventoryItemExpiredDomainEvent(_item));
+                    anyExpired = true;
                 }
             }
+            return anyExpired;
         }
     }
 }

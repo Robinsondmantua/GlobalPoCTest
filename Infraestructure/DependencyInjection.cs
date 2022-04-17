@@ -2,6 +2,7 @@
 using Application.Common.Interfaces;
 using FluentValidation;
 using Infraestructure.Repository;
+using Infraestructure.Services;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -20,12 +21,13 @@ namespace Application.Common
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
-            services.AddTransient<IUnitOfWork, MemoryUnitOfWork>();
-            services.AddSingleton<ICommandRepository<Domain.Entities.Item>, CommandMemoryRepositoryItem>();
-            services.AddSingleton<IQueryRepository<Domain.Entities.Item>, QueryMemoryRepositoryItem>();
-            services.AddSingleton<ICommandRepository<Domain.Aggregate.Inventory>, CommandMemoryRepositoryInventory>();
-            services.AddSingleton<IQueryRepository<Domain.Aggregate.Inventory>, QueryMemoryRepositoryInventory>();
-            services.AddSingleton<IContext, Context>();
+            services.AddScoped<IUnitOfWork, MemoryUnitOfWork>();
+            services.AddScoped<ICommandRepository<Domain.Entities.Item>, CommandMemoryRepositoryItem>();
+            services.AddScoped<IQueryRepository<Domain.Entities.Item>, QueryMemoryRepositoryItem>();
+            services.AddScoped<ICommandRepository<Domain.Aggregate.Inventory>, CommandMemoryRepositoryInventory>();
+            services.AddScoped<IQueryRepository<Domain.Aggregate.Inventory>, QueryMemoryRepositoryInventory>();
+            services.AddScoped<IContext, Context>();
+            services.AddSingleton<IEventNotificationService, NotificationService>();
             return services;
         }
 

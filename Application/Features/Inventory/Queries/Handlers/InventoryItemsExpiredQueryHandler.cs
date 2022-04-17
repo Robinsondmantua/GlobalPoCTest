@@ -22,6 +22,8 @@ namespace Application.Features.Inventory.Queries.Handlers
         private readonly IQueryRepository<Domain.Aggregate.Inventory> _inventoryQueryRepository;
         private readonly IMapper _mapper;
         private readonly IMediator _mediator;
+        private readonly IEventNotificationService _eventNotificationService;
+        
         public InventoryItemsExpiredQueryHandler(IQueryRepository<Domain.Aggregate.Inventory> inventoryQueryRepository, IMapper mapper, IMediator mediator)
         {
             _inventoryQueryRepository = inventoryQueryRepository;
@@ -38,14 +40,9 @@ namespace Application.Features.Inventory.Queries.Handlers
                 throw new NotFoundException("Inventory not found");
             }
 
-            inventory.CheckItemsExpired();
-
-            foreach (var @event in inventory.DomainEvents)
+            if (inventory.IsAnyItemExpired())
             {
-                if (@event is InventoryItemExpiredDomainEvent)
-                {
-                    await _mediator.Publish(@event, cancellationToken);
-                }
+                await _eventNotificationService.Notify();
             }
 
             return _mapper.Map<InventoryDto>(inventory);

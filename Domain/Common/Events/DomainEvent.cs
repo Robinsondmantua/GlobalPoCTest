@@ -15,6 +15,8 @@ namespace Domain.Common.Events
         {
             DateRaised = DateTime.UtcNow;
         }
+
+        public bool IsPublished { get; set; }
         public DateTimeOffset DateRaised {get; protected set; } = DateTime.UtcNow; 
     }
 }

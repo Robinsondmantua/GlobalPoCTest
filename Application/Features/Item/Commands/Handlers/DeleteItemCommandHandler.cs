@@ -27,7 +27,8 @@ namespace Application.Features.Item.Queries.Handlers
         public async Task<Unit> Handle(DeleteItemCommandRequest request, CancellationToken cancellationToken)
         {
             var entity = await _itemQueryRepository.GetByIdAsync(request.Id);
-            if (entity == null)
+            
+            if (entity is null)
             {
                 throw new NotFoundException("Item not found");
             }

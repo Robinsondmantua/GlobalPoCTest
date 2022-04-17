@@ -29,7 +29,9 @@ namespace Application.Features.Item.Queries.Handlers
 
         public async Task<ItemDto> Handle(UpdateItemCommandRequest request, CancellationToken cancellationToken)
         {
+
             var entity = _mapper.Map<Domain.Entities.Item>(request.RequestParams);
+
             await Task.Run(() => { return _itemCommandRepository.UpdateAsync(entity); });
 
             var updatedItem = await _itemQueryRepository.GetByIdAsync(request.RequestParams.Id);

@@ -38,8 +38,12 @@ namespace Application.Features.Inventory.Queries.Handlers
             if (inventory.Items.Any(x => x.Name == request.ItemName))
             {
                 var itemToRemove = inventory.Items.FirstOrDefault(x => x.Name == request.ItemName);
-                var domainEventRelated = inventory.RemoveItem(itemToRemove);
-                await _mediator.Publish(new InventoryItemDeletedEventNotificacion(domainEventRelated), cancellationToken);
+                
+                if (itemToRemove is not null)
+                {
+                    inventory.DomainEvents.Add(new InventoryItemDeletedDomainEvent(itemToRemove));
+                }
+                
                 await _inventoryCommandRepository.UpdateAsync(inventory);
             }
             else
