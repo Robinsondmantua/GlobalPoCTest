@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Domain.Common 
 {
+    /// <summary>
+    /// Base class for DDD objects
+    /// </summary>
     public class EntityBase
     {
         public Guid Id {get; protected set;}

@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Infraestructure.Repository
 {
+    /// <summary>
+    /// Fake context
+    /// </summary>
     public class Context : IContext
     {
         public List<Item> Items { get; set; } = new List<Item>();

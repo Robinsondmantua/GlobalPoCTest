@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Domain.Enums
 {
+    /// <summary>
+    /// Enum for defining item`s types
+    /// </summary>
     public enum ItemType
     {
         Type1,

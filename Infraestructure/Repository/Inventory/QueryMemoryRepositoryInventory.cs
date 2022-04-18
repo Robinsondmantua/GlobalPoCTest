@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Infraestructure.Repository
 {
+    /// <summary>
+    /// Inventory's query repository 
+    /// </summary>
     public class QueryMemoryRepositoryInventory : IQueryRepository<Domain.Aggregate.Inventory>
     {
         private readonly IUnitOfWork _unitOfWork;

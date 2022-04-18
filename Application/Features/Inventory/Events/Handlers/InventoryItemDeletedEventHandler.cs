@@ -10,6 +10,10 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Inventory.Events
 {
+    /// <summary>
+    /// Event handler for tracing an event's information.
+    /// </summary>
+    
     public class InventoryItemDeletedEventHandler : INotificationHandler<InventoryItemDeletedEventNotificacion>
     {
         private readonly ILogger<InventoryItemDeletedEventHandler> _logger;

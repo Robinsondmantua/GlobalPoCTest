@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Inventory\Commands\Validators\" />
+    <Folder Include="Common\Dtos\" />
   </ItemGroup>
 
 </Project>

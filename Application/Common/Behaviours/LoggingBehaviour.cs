@@ -13,8 +13,8 @@ namespace Application.Common.Behaviours
     /// <summary>
     /// Mediatr pipeline to trace in a log all request made by a CorrelationId.
     /// </summary>
-    /// <typeparam name="TRequest"></typeparam>
-    /// <typeparam name="TResponse"></typeparam>
+    /// <typeparam name="TRequest"></typeparam> Request
+    /// <typeparam name="TResponse"></typeparam> Response
     public class LoggingBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
     {
         private readonly ILogger<LoggingBehaviour<TRequest, TResponse>> _logger;

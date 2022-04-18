@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Infraestructure.Repository
 {
     /// <summary>
-    /// Unit of work pattern to group operations
+    /// Unit of work pattern to confirm operations related with the BB.DD repository. 
     /// </summary>
     public class MemoryUnitOfWork : IUnitOfWork
     {

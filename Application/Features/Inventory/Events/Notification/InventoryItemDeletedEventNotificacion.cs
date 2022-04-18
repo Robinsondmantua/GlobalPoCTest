@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Inventory.Events.Notification
 {
+    /// <summary>
+    /// Request for receiving an event.
+    /// </summary>
+
     public class InventoryItemDeletedEventNotificacion : INotification
     {
         public DomainEvent DomainEvent { get; set; }

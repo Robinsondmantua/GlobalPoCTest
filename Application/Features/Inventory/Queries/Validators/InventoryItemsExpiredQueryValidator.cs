@@ -10,12 +10,11 @@ using System.Threading.Tasks;
 namespace Application.Features.Inventory.Queries.Validators
 {
     /// <summary>
-    /// Class to validate the request information when searching an inventory
+    /// Class to validate the request information regarding with items expired in an related inventory.
     /// </summary>
-
-    public class InventorySingleQueryValidator : AbstractValidator<InventorySingleQueryRequest>
+    public class InventoryItemsExpiredQueryValidator : AbstractValidator<InventoryItemExpiredQueryRequest>
     {
-        public InventorySingleQueryValidator()
+        public InventoryItemsExpiredQueryValidator()
         {
             RuleFor(v => v.Id).SetValidator(new BaseValidator());
         }

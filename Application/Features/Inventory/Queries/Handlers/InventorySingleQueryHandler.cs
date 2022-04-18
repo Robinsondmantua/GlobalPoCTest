@@ -1,4 +1,5 @@
-﻿using Application.Common.Interfaces;
+﻿using Application.Common.Exceptions;
+using Application.Common.Interfaces;
 using Application.Features.Inventory.Dtos;
 using Application.Features.Inventory.Queries.Request;
 using AutoMapper;
@@ -28,7 +29,14 @@ namespace Application.Features.Inventory.Queries.Handlers
 
         public async Task<InventoryDto> Handle(InventorySingleQueryRequest request, CancellationToken cancellationToken)
         {
-            return _mapper.Map<InventoryDto>(_inventoryQueryRepository.GetByIdAsync(request.Id).Result);
+            var inventory = _inventoryQueryRepository.GetByIdAsync(request.Id).Result;
+
+            if (inventory is null)
+            {
+                throw new NotFoundException("Inventory not found");
+            }
+
+            return _mapper.Map<InventoryDto>(inventory);
         }
     }
 }

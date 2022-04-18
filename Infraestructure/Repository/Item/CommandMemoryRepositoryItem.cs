@@ -7,6 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 namespace Infraestructure.Repository
 {
+    /// <summary>
+    /// Items's command repository 
+    /// </summary>
     public class CommandMemoryRepositoryItem : ICommandRepository<Domain.Entities.Item>
     
     {

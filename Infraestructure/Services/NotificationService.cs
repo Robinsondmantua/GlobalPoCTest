@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace Infraestructure.Services
 {
+    /// <summary>
+    /// Service for traking events (Simulates a traking in a ORM)
+    /// </summary>
     public class NotificationService : IEventNotificationService
     {
         private readonly IUnitOfWork _unitOfWork;

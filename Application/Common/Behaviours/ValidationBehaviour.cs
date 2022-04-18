@@ -12,8 +12,8 @@ namespace Application.Common.Behaviours
 	/// Mediatr pipeline to validate all incoming parameters using fluentvalidation. When the validation fails
 	/// an exception is throwing
 	/// </summary>
-	/// <typeparam name="TRequest"></typeparam>
-	/// <typeparam name="TResponse"></typeparam>
+	/// <typeparam name="TRequest"></typeparam> Request
+	/// <typeparam name="TResponse"></typeparam> Response
 	public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
 		where TRequest : IRequest<TResponse>
 	{

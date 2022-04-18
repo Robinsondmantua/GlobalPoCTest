@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Inventory.Events.Handlers
 {
+    /// <summary>
+    /// Event handler for tracing an event's information.
+    /// </summary>
+
     public class InventoryItemExpiresEventNotification : INotificationHandler<InventoryItemExpiresEventNotificacion>
     {
         private readonly ILogger<InventoryItemExpiresEventNotificacion> _logger;

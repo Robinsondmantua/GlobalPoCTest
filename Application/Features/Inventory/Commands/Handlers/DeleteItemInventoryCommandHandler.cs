@@ -13,17 +13,18 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Inventory.Queries.Handlers
 {
+    /// <summary>
+    /// Command to delete an inventory's item
+    /// </summary>
     public class DeleteItemInventoryCommandHandler : IRequestHandler<DeleteItemInventoryCommandRequest, Unit>
     {
         private readonly ICommandRepository<Domain.Aggregate.Inventory> _inventoryCommandRepository;
         private readonly IQueryRepository<Domain.Aggregate.Inventory> _inventoryQueryRepository;
-        private readonly IMediator _mediator;
 
-        public DeleteItemInventoryCommandHandler(ICommandRepository<Domain.Aggregate.Inventory> inventoryCommandRepository, IQueryRepository<Domain.Aggregate.Inventory> inventoryQueryRepository, IMediator mediator)
+        public DeleteItemInventoryCommandHandler(ICommandRepository<Domain.Aggregate.Inventory> inventoryCommandRepository, IQueryRepository<Domain.Aggregate.Inventory> inventoryQueryRepository)
         {
             _inventoryCommandRepository = inventoryCommandRepository;
             _inventoryQueryRepository = inventoryQueryRepository;
-            _mediator = mediator;
         }
 
         public async Task<Unit> Handle(DeleteItemInventoryCommandRequest request, CancellationToken cancellationToken)
@@ -48,7 +49,7 @@ namespace Application.Features.Inventory.Queries.Handlers
             }
             else
             {
-                throw new NotFoundException("Inventory not found");
+                throw new NotFoundException("Item not found");
             }
 
             return default;

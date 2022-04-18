@@ -12,6 +12,9 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Inventory.Queries.Handlers
 {
+    /// <summary>
+    /// Command to create an inventory
+    /// </summary>
     public class NewInventoryCommandHandler : IRequestHandler<NewInventoryCommandRequest, InventoryDto>
     {
         private readonly ICommandRepository<Domain.Aggregate.Inventory> _inventoryCommandRepository;
