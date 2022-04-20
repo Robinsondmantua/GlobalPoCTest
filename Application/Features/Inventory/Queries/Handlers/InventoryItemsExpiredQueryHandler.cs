@@ -21,14 +21,12 @@ namespace Application.Features.Inventory.Queries.Handlers
     {
         private readonly IQueryRepository<Domain.Aggregate.Inventory> _inventoryQueryRepository;
         private readonly IMapper _mapper;
-        private readonly IMediator _mediator;
         private readonly IEventNotificationService _eventNotificationService;
         
-        public InventoryItemsExpiredQueryHandler(IQueryRepository<Domain.Aggregate.Inventory> inventoryQueryRepository, IMapper mapper, IMediator mediator)
+        public InventoryItemsExpiredQueryHandler(IQueryRepository<Domain.Aggregate.Inventory> inventoryQueryRepository, IMapper mapper)
         {
             _inventoryQueryRepository = inventoryQueryRepository;
             _mapper = mapper;
-            _mediator = mediator;
         }
 
         public async Task<InventoryDto> Handle(InventoryItemExpiredQueryRequest request, CancellationToken cancellationToken)

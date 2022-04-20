@@ -37,7 +37,7 @@ namespace Application.Features.Inventory.Queries.Handlers
             var existingItems = _itemsQueryRepository.GetAllAsync().Result.Select(x => x.Id);
             var itemsNotFounded = request.Items?.Except(existingItems).Any();
 
-            if(itemsNotFounded ?? false)
+            if(itemsNotFounded ?? true)
             {
                 throw new NotFoundException($"Item to add not found");
             }

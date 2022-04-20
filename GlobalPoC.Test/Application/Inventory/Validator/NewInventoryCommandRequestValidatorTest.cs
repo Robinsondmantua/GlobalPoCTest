@@ -1,0 +1,30 @@
+﻿using Application.Features.Inventory.Commands.Request;
+using Application.Features.Item.Commands.Validators;
+using FluentAssertions;
+using FluentValidation.TestHelper;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Xunit;
+
+namespace GlobalPoC.Test.Application.Inventory.Validator
+{
+    public class NewInventoryCommandRequestValidatorTest
+	{
+		[Fact]
+		public void ValidateMethod_WhenNameIsEmpty_ShouldReturnFalse()
+		{
+			//Arrange
+			var _cut = new NewInventoryCommandRequestValidator();
+			var requestToValidate = new NewInventoryCommandRequest(String.Empty);
+
+			//Act
+			var v = _cut.TestValidate(requestToValidate);
+
+			//Assert
+			v.IsValid.Should().BeFalse();
+		}
+	}
+}

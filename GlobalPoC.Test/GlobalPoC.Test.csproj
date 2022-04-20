@@ -25,7 +25,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Application\Item\" />
+    <Folder Include="Application\Item\Handlers\Commands\" />
+    <Folder Include="Application\Item\Handlers\Mapping\" />
+    <Folder Include="Application\Item\Handlers\Validator\" />
+    <Folder Include="Application\Item\Handlers\Queries\" />
   </ItemGroup>
 
   <ItemGroup>
