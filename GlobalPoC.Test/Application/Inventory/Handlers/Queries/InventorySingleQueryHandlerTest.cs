@@ -48,7 +48,6 @@ namespace Test.Application.Inventory
             var fixture = new Fixture();
             fixture.Customize(new AutoMoqCustomization());
             var queryRequest = fixture.Create<InventorySingleQueryRequest>();
-            var inventory = fixture.Create<Domain.Aggregate.Inventory>();
 
             _inventoryQueryRepository.Setup(r => r.GetByIdAsync(It.IsAny<Guid>())).Returns(Task.FromResult<Domain.Aggregate.Inventory>(null));
 

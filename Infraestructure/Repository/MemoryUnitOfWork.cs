@@ -10,7 +10,7 @@ namespace Infraestructure.Repository
     /// <summary>
     /// Unit of work pattern to confirm operations related with the BB.DD repository. 
     /// </summary>
-    public class MemoryUnitOfWork : IUnitOfWork
+    public class MemoryUnitOfWork : IUnitOfWork 
     {
         private readonly IEventNotificationService _eventNotificationService;
 
@@ -31,7 +31,7 @@ namespace Infraestructure.Repository
 
         public void Dispose()
         {
-            //Dispose
+            this.Dispose();
         }
     }
 }

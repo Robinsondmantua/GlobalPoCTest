@@ -17,7 +17,7 @@ namespace GlobalPoC.Application.Inventory
 			var validator = new BaseValidator();
 
 			//Act
-			var v = validator.Validate(new System.Guid());
+			var v = validator.Validate(System.Guid.Empty);
 
 			//Assert
 			v.IsValid.Should().BeFalse();
