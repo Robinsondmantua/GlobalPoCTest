@@ -1,4 +1,5 @@
 ﻿using Application.Common.Interfaces;
+using Domain.Common.Events;
 using Infraestructure.Repository;
 using MediatR;
 using System;
@@ -25,14 +26,21 @@ namespace Infraestructure.Services
 
         public async Task Notify()
         {
-            var events = _context.Inventories.SelectMany(x => x.DomainEvents.Where(x => x.IsPublished == false))
-                .Union(_context.Items.SelectMany(x=>x.DomainEvents.Where(x => x.IsPublished == false))).ToList();
+            var events = _context.Inventories.SelectMany(x => x.DomainEvents.Where(x => !x.IsPublished))
+                .Union(_context.Items.SelectMany(x=>x.DomainEvents.Where(x => !x.IsPublished))).ToList();
 
             foreach(var @event in events)
             {
                 @event.IsPublished = true;
-                await _mediator.Publish(@event);
+                var eventToPublish = GetEventToPublish(@event);
+                await _mediator.Publish(eventToPublish);
             }
+        }
+
+        private INotification GetEventToPublish(DomainEvent @event)
+        {
+            return (INotification)Activator.CreateInstance(
+                typeof(DomainEventWrapper<>).MakeGenericType(@event.GetType()), @event)!;
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Application.Features.Item.Commands.Validators
         public NewItemCommandValidator()
         {
             RuleFor(v => v.RequestParams.ExpirationDate)
-            .Must(x => x < DateTime.Today)
+            .Must(x => x >= DateTime.Today)
             .When(v => v.RequestParams.ExpirationDate.HasValue);
 
             RuleFor(v => v.RequestParams.Name)

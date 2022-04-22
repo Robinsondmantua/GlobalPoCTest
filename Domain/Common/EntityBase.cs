@@ -13,6 +13,6 @@ namespace Domain.Common
     public class EntityBase
     {
         public Guid Id {get; protected set;}
-        public List<DomainEvent> DomainEvents { get; set; }
+        public List<DomainEvent> DomainEvents { get; set; } = new List<DomainEvent>();
     }
 }

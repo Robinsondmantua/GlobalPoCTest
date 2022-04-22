@@ -37,6 +37,7 @@ namespace GlobalPoC.Application.Item
 			var dto = _mapper.Map<Domain.Entities.Item>(entity);
 
 			//Assert
+			dto.Id.Should().Be(entity.Id);
 			dto.ExpirationDate.Should().Be(entity.ExpirationDate);
 			dto.Name.Should().Be(entity.Name);
 			dto.Type.Should().Be(entity.Type);

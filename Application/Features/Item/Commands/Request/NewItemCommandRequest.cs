@@ -13,9 +13,9 @@ namespace Application.Features.Item.Commands.Request
     /// </summary>
     public class NewItemCommandRequest : IRequest<ItemDto>
     {
-        public ItemDto RequestParams { get; set; }
+        public NewItemDto RequestParams { get; set; }
 
-        public NewItemCommandRequest(ItemDto requestParams)
+        public NewItemCommandRequest(NewItemDto requestParams)
         {
             RequestParams = requestParams;
         }

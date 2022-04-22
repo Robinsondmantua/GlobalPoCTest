@@ -21,7 +21,7 @@ namespace GlobalPoC.Test.Application.Item
 		{
 			//Arrange
 			var _cut = new NewItemCommandValidator();
-			var requestToValidate = new NewItemCommandRequest(new ItemDto { Id = Guid.NewGuid(), Name = String.Empty });
+			var requestToValidate = new NewItemCommandRequest(new NewItemDto { Name = String.Empty });
 
 			//Act
 			var v = _cut.TestValidate(requestToValidate);
@@ -35,7 +35,7 @@ namespace GlobalPoC.Test.Application.Item
 		{
 			//Arrange
 			var _cut = new NewItemCommandValidator();
-			var requestToValidate = new NewItemCommandRequest(new ItemDto { Id = Guid.NewGuid(), Name = It.IsAny<string>(), ExpirationDate = DateTime.UtcNow.AddDays(-1)});
+			var requestToValidate = new NewItemCommandRequest(new NewItemDto { Name = It.IsAny<string>(), ExpirationDate = DateTime.UtcNow.AddDays(-1)});
 
 			//Act
 			var v = _cut.TestValidate(requestToValidate);

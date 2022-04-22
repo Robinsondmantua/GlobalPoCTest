@@ -26,7 +26,7 @@ namespace Domain.Aggregate
         {
             return new Inventory
             {
-                Id = new Guid(),
+                Id = Guid.NewGuid(),
                 Name = _name,
                 Description = _description
             };

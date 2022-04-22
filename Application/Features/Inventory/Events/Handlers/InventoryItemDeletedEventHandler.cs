@@ -1,4 +1,4 @@
-﻿using Application.Features.Inventory.Events.Notification;
+﻿using Application.Common.Interfaces;
 using Domain.Events;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -14,7 +14,7 @@ namespace Application.Features.Inventory.Events
     /// Event handler for tracing an event's information.
     /// </summary>
     
-    public class InventoryItemDeletedEventHandler : INotificationHandler<InventoryItemDeletedEventNotificacion>
+    public class InventoryItemDeletedEventHandler : INotificationHandler<DomainEventWrapper<InventoryItemDeletedDomainEvent>>
     {
         private readonly ILogger<InventoryItemDeletedEventHandler> _logger;
 
@@ -23,7 +23,7 @@ namespace Application.Features.Inventory.Events
             _logger = logger;
         }
 
-        public Task Handle(InventoryItemDeletedEventNotificacion notification, CancellationToken cancellationToken)
+        public Task Handle(DomainEventWrapper<InventoryItemDeletedDomainEvent> notification, CancellationToken cancellationToken)
         {
             var domainEvent = notification.DomainEvent;
 

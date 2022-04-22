@@ -50,7 +50,9 @@ namespace Application.Features.Inventory.Queries.Handlers
                 newInventory.AddItem(itemToAdd);
             }
 
-            return _mapper.Map<InventoryDto>(newInventory);
+            var result = await Task.Run(() => { return _inventoryCommandRepository.AddAsync(newInventory); });
+
+            return _mapper.Map<InventoryDto>(result);
         }
     }
 }

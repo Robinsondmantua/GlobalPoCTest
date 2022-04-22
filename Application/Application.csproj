@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Features\Inventory\Events\Notification\InventoryItemDeletedEventNotificacion.cs" />
+    <Compile Remove="Features\Inventory\Events\Notification\InventoryItemExpiresEventNotificacion.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.4.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
@@ -18,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Common\Dtos\" />
+    <Folder Include="Features\Inventory\Events\Notification\" />
   </ItemGroup>
 
 </Project>

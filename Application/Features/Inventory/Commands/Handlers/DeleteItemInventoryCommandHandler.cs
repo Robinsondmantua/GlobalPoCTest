@@ -1,8 +1,6 @@
 ﻿using Application.Common.Exceptions;
 using Application.Common.Interfaces;
 using Application.Features.Inventory.Commands.Request;
-using Application.Features.Inventory.Events.Notification;
-using Application.Features.Item.Commands.Request;
 using Domain.Events;
 using MediatR;
 using System;
@@ -43,6 +41,7 @@ namespace Application.Features.Inventory.Queries.Handlers
                 if (itemToRemove is not null)
                 {
                     inventory.DomainEvents.Add(new InventoryItemDeletedDomainEvent(itemToRemove));
+                    inventory.RemoveItem(itemToRemove);
                 }
                 
                 await _inventoryCommandRepository.UpdateAsync(inventory);

@@ -22,7 +22,7 @@ namespace Domain.Entities
         {
             return new Item
             {
-                Id = new Guid(),
+                Id = Guid.NewGuid(),
                 Name = name,
                 Type = type,
                 ExpirationDate = expirationDate

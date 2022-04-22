@@ -15,6 +15,8 @@ namespace Presentation.Controllers
     {
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [SwaggerOperation("Create an item.")]
         public async Task<ActionResult<ItemDto>> CreateTodoItem([FromBody] NewItemCommandRequest command)
         {
@@ -26,7 +28,8 @@ namespace Presentation.Controllers
         [SwaggerOperation("Delete an existing item.")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> DeleteItem(Guid id)
         {
             var result = await Mediator.Send(new DeleteItemCommandRequest(id));
@@ -38,22 +41,22 @@ namespace Presentation.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> UpdateItem(Guid id, UpdateItemCommandRequest command)
         {
-            if (command.RequestParams.Id == id)
-            {
-                var result = await Mediator.Send(command);
-                return Ok(result);
-            }
-            else
+            if (!id.Equals(command.RequestParams.Id))
             {
                 return BadRequest();
             }
+
+            var result = await Mediator.Send(command);
+            return Ok(result);
         }
 
         [HttpGet]
         [SwaggerOperation("Get all items.")]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<List<ItemDto>> GetAll()
         {
             var result = await Mediator.Send(new ItemAllQueryRequest());

@@ -35,7 +35,7 @@ namespace Application.Common.Behaviours
 
 				if (failures.Count != 0)
 				{
-					throw new ValidationException(failures);
+					throw new Application.Common.Exceptions.ValidationException(failures);
 				}
 			}
 			return await next();

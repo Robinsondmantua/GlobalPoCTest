@@ -1,4 +1,5 @@
-﻿using Application.Features.Inventory.Events.Notification;
+﻿using Application.Common.Interfaces;
+using Domain.Events;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using System;
@@ -13,16 +14,16 @@ namespace Application.Features.Inventory.Events.Handlers
     /// Event handler for tracing an event's information.
     /// </summary>
 
-    public class InventoryItemExpiresEventNotification : INotificationHandler<InventoryItemExpiresEventNotificacion>
+    public class InventoryItemExpiresEventNotification : INotificationHandler<DomainEventWrapper<InventoryItemExpiredDomainEvent>>
     {
-        private readonly ILogger<InventoryItemExpiresEventNotificacion> _logger;
+        private readonly ILogger<InventoryItemExpiresEventNotification> _logger;
 
-        public InventoryItemExpiresEventNotification(ILogger<InventoryItemExpiresEventNotificacion> logger)
+        public InventoryItemExpiresEventNotification(ILogger<InventoryItemExpiresEventNotification> logger)
         {
             _logger = logger;
         }
 
-        public Task Handle(InventoryItemExpiresEventNotificacion notification, CancellationToken cancellationToken)
+        public Task Handle(DomainEventWrapper<InventoryItemExpiredDomainEvent> notification, CancellationToken cancellationToken)
         {
             var domainEvent = notification.DomainEvent;
 

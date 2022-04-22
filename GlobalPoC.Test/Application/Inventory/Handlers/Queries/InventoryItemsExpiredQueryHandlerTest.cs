@@ -38,7 +38,7 @@ namespace GlobalPoC.Test.Application.Inventory
 
             _mapper = mockMapper.CreateMapper();
 
-            _cut = new InventoryItemsExpiredQueryHandler(_inventoryQueryRepository.Object, _mapper);
+            _cut = new InventoryItemsExpiredQueryHandler(_inventoryQueryRepository.Object, _mapper, _eventNotificationService.Object);
         }
 
         [Fact]

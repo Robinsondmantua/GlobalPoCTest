@@ -5,10 +5,6 @@ using System.Threading.Tasks;
 using Application.Features.Inventory.Commands.Request;
 using Application.Features.Inventory.Dtos;
 using Application.Features.Inventory.Queries.Request;
-using Application.Features.Item.Commands.Request;
-using Application.Features.Item.Dtos;
-using Application.Features.Item.Queries.Handlers;
-using Application.Features.Item.Queries.Request;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -30,8 +26,13 @@ namespace Presentation.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
 
-        public async Task<ActionResult> DeleteInventoryItem([FromBody] DeleteItemInventoryCommandRequest command)
+        public async Task<ActionResult> DeleteInventoryItem(Guid id, [FromBody] DeleteItemInventoryCommandRequest command)
         {
+            if(!id.Equals(command.InventoryId))
+            {
+                return BadRequest();
+            }
+
             var result = await Mediator.Send(command);
             return Ok(result);
         }
