@@ -1,5 +1,6 @@
-﻿using Application.Features.Inventory.Commands.Request;
+﻿using Application.Features.Item.Commands.Request;
 using Application.Features.Item.Commands.Validators;
+using Application.Features.Item.Dtos;
 using FluentAssertions;
 using FluentValidation.TestHelper;
 using System;
@@ -9,20 +10,16 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace GlobalPoC.Test.Application
+namespace GlobalPoC.Test.Application.Item
 {
-	/// <summary>
-	/// Unit test for NewInventoryCommandRequest class
-	/// </summary>
-
-	public class NewInventoryCommandRequestValidatorTest
+	public class UpdateItemCommandRequestValidatorTest
 	{
 		[Fact]
 		public void ValidateMethod_WhenNameIsEmpty_ShouldReturnFalse()
 		{
 			//Arrange
-			var _cut = new NewInventoryCommandRequestValidator();
-			var requestToValidate = new NewInventoryCommandRequest(String.Empty);
+			var _cut = new UpdateItemCommandValidator();
+			var requestToValidate = new UpdateItemCommandRequest(new ItemDto { Id = Guid.NewGuid(), Name = String.Empty });
 
 			//Act
 			var v = _cut.TestValidate(requestToValidate);

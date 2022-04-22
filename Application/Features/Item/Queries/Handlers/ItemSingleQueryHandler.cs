@@ -1,4 +1,5 @@
-﻿using Application.Common.Interfaces;
+﻿using Application.Common.Exceptions;
+using Application.Common.Interfaces;
 using Application.Features.Item.Dtos;
 using Application.Features.Item.Queries.Request;
 using AutoMapper;
@@ -28,7 +29,14 @@ namespace Application.Features.Item.Queries.Handlers
 
         public async Task<ItemDto> Handle(ItemSingleQueryRequest request, CancellationToken cancellationToken)
         {
-            return _mapper.Map<ItemDto>(_itemQueryRepository.GetByIdAsync(request.Id).Result); 
+            var item = _itemQueryRepository.GetByIdAsync(request.Id).Result;
+
+            if (item is null)
+            {
+                throw new NotFoundException("Item not found");
+            }
+
+            return _mapper.Map<ItemDto>(item); 
         }
     }
 }

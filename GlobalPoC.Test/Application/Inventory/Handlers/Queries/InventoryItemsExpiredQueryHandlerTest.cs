@@ -16,8 +16,12 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace GlobalPoC.Test.Application.Inventory.Handlers.Queries
+namespace GlobalPoC.Test.Application.Inventory
 {
+    /// <summary>
+    /// Unit test for InventoryItemsExpiredQueryHandler class
+    /// </summary>
+
     public class InventoryItemsExpiredQueryHandlerTest
     {
         private readonly Mock<IQueryRepository<Domain.Aggregate.Inventory>> _inventoryQueryRepository = new Mock<IQueryRepository<Domain.Aggregate.Inventory>>();

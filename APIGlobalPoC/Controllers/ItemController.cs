@@ -61,7 +61,7 @@ namespace Presentation.Controllers
         }
 
         [HttpGet("{id}")]
-        [SwaggerOperation("Get a ToDo task by its identifier.")]
+        [SwaggerOperation("Get an item by its identifier.")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]

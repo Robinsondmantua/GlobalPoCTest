@@ -2,8 +2,11 @@
 using FluentAssertions;
 using Xunit;
 
-namespace RiaLink.UnitTest.Application.Validator
+namespace GlobalPoC.Application.Inventory
 {
+    /// <summary>
+    /// Unit test for BaseValidator class
+    /// </summary>
 	public class BaseValidatorTest
 	{
 

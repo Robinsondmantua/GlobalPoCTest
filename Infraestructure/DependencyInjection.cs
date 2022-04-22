@@ -21,12 +21,12 @@ namespace Application.Common
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
-            services.AddScoped<IUnitOfWork, MemoryUnitOfWork>();
-            services.AddScoped<ICommandRepository<Domain.Entities.Item>, CommandMemoryRepositoryItem>();
-            services.AddScoped<IQueryRepository<Domain.Entities.Item>, QueryMemoryRepositoryItem>();
-            services.AddScoped<ICommandRepository<Domain.Aggregate.Inventory>, CommandMemoryRepositoryInventory>();
-            services.AddScoped<IQueryRepository<Domain.Aggregate.Inventory>, QueryMemoryRepositoryInventory>();
-            services.AddScoped<IContext, Context>();
+            services.AddTransient<IUnitOfWork, MemoryUnitOfWork>();
+            services.AddSingleton<ICommandRepository<Domain.Entities.Item>, CommandMemoryRepositoryItem>();
+            services.AddSingleton<IQueryRepository<Domain.Entities.Item>, QueryMemoryRepositoryItem>();
+            services.AddSingleton<ICommandRepository<Domain.Aggregate.Inventory>, CommandMemoryRepositoryInventory>();
+            services.AddSingleton<IQueryRepository<Domain.Aggregate.Inventory>, QueryMemoryRepositoryInventory>();
+            services.AddSingleton<IContext, Context>();
             services.AddSingleton<IEventNotificationService, NotificationService>();
             return services;
         }

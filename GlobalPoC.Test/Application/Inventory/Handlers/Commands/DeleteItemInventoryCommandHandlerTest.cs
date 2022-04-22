@@ -2,10 +2,8 @@
 using Application.Common.Interfaces;
 using Application.Features.Inventory.Commands.Request;
 using Application.Features.Inventory.Queries.Handlers;
-using Application.Mapping;
 using AutoFixture;
 using AutoFixture.AutoMoq;
-using AutoMapper;
 using FluentAssertions;
 using Moq;
 using System;
@@ -16,10 +14,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Test.Application.Inventory
+namespace GlobalPoC.Application.Inventory
 {
     /// <summary>
-    /// Unit test for NewInventoryCommandHandlerTest class
+    /// Unit test for DeleteItemInventoryCommandHandler class
     /// </summary>
     public class DeleteItemInventoryCommandHandlerTest
     {
@@ -34,7 +32,7 @@ namespace Test.Application.Inventory
         }
 
         [Fact]
-        public async Task HandleMethod_WhenInventoryHasNotFound_ShouldReturnNotFoundException()
+        public async Task HandleMethod_WhenItemHasNotFound_ShouldReturnNotFoundException()
         {
             //Arrange
             var fixture = new Fixture();

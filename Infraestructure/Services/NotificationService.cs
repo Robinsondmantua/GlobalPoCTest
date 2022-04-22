@@ -14,13 +14,11 @@ namespace Infraestructure.Services
     /// </summary>
     public class NotificationService : IEventNotificationService
     {
-        private readonly IUnitOfWork _unitOfWork;
         private readonly IContext _context;
         private readonly IMediator _mediator;
 
-        public NotificationService(IUnitOfWork unitOfWork, IContext context, IMediator mediator)
+        public NotificationService(IContext context, IMediator mediator)
         {
-            _unitOfWork = unitOfWork;
             _context = context;
             _mediator = mediator;
         }

@@ -9,9 +9,13 @@ using AutoMapper;
 using FluentAssertions;
 using Xunit;
 
-namespace ToDo.UnitTest.Application.TodoItem.Commands.Mappings
+namespace GlobalPoC.Application.Inventory
 {
-    public class InventoryToInventoryDto
+	/// <summary>
+	/// Unit test for Inventory mapping class
+	/// </summary>
+
+	public class InventoryToInventoryDto
 	{
         private readonly IMapper _mapper;
 

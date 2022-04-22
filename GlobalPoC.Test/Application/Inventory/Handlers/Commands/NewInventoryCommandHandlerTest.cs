@@ -16,10 +16,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Test.Application.Inventory
+namespace GlobalPoC.Application.Inventory
 {
     /// <summary>
-    /// Unit test for NewInventoryCommandHandlerTest class
+    /// Unit test for NewInventoryCommandHandler class
     /// </summary>
     public class NewInventoryCommandHandlerTest
     {

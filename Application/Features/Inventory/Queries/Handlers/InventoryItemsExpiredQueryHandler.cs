@@ -21,7 +21,7 @@ namespace Application.Features.Inventory.Queries.Handlers
     {
         private readonly IQueryRepository<Domain.Aggregate.Inventory> _inventoryQueryRepository;
         private readonly IMapper _mapper;
-        private readonly IEventNotificationService _eventNotificationService;
+        //private readonly IEventNotificationService _eventNotificationService;
         
         public InventoryItemsExpiredQueryHandler(IQueryRepository<Domain.Aggregate.Inventory> inventoryQueryRepository, IMapper mapper)
         {
@@ -40,7 +40,7 @@ namespace Application.Features.Inventory.Queries.Handlers
 
             if (inventory.IsAnyItemExpired())
             {
-                await _eventNotificationService.Notify();
+                //await _eventNotificationService.Notify();
             }
 
             return _mapper.Map<InventoryDto>(inventory);

@@ -13,12 +13,10 @@ namespace Infraestructure.Repository
     /// </summary>
     public class QueryMemoryRepositoryInventory : IQueryRepository<Domain.Aggregate.Inventory>
     {
-        private readonly IUnitOfWork _unitOfWork;
         private readonly IContext _context;
 
-        public QueryMemoryRepositoryInventory(IUnitOfWork unitOfWork, IContext context)
+        public QueryMemoryRepositoryInventory(IContext context)
         {
-            _unitOfWork = unitOfWork;
             _context = context;
         }
 

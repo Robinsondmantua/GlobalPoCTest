@@ -9,9 +9,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace GlobalPoC.Test.Application.Inventory.Validator
+namespace GlobalPoC.Test.Application
 {
-    public class DeleteItemInventoryCommandRequestValidatorTest
+	/// <summary>
+	/// Unit test for DeleteItemInventoryCommandRequest class
+	/// </summary>
+	public class DeleteItemInventoryCommandRequestValidatorTest
     {
 		[Fact]
 		public void ValidateMethod_WhenNameIsEmpty_ShouldReturnFalse()

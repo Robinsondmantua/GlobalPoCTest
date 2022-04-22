@@ -3,7 +3,7 @@ using FluentAssertions;
 using System;
 using Xunit;
 
-namespace Test
+namespace GlobalPoC.Test.ValueObjects
 {
     /// <summary>
     /// Unit test of PrefixBrandName domain class. 
